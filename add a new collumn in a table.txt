@@ -1,4 +1,5 @@
 ==add a new collumn in a table==
+test
 
 	
 1. php artisan make:migration add_subscribe_to_users_table --table=users
