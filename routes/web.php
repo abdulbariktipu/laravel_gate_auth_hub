@@ -21,30 +21,32 @@ use App\Http\Controllers\PostPolicyController;
 //     return view('subscriber');
 // });
 // https://blog.w3programmers.com/authorization-with-laravel-gates/
-Route::get('subscribe',function() {
-    if (Gate::allows('subscriber-only', Auth::user())) {
-        return view('subscriber');
-    }
-    return redirect()->route('login');
-});
+// Route::get('subscribe',function() {
+//     if (Gate::allows('subscriber-only', Auth::user())) {
+//         return view('subscriber');
+//     }
+//     return redirect()->route('login');
+// });
 
 // for vuejs
-Route::get('/appVue', function () {
-    return view('appVue');
-})
-->name('application');
+// Route::get('/appVue', function () {
+//     return view('appVue');
+// })
+// ->name('application');
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.show');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+Route::get('/calendar', [App\Http\Controllers\HomeController::class, 'CalendarFn'])->name('calendar');
 
 Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
