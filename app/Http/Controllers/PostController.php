@@ -44,8 +44,12 @@ class PostController extends Controller
             'title' => $request->input('title'),
             'content' => $request->input('content'),
         ]);
-
-        return redirect()->route('posts.show', ['post' => $post->id])->with('success', 'Post created successfully.');
+        $notification=array(
+            'messege'=>'Sucessfully Data Inserted',
+            'alert-type'=>'success'
+        );
+        // return Redirect()->route('all.employee')->with($notification);
+        return redirect()->route('posts.show', ['post' => $post->id])->with($notification);
     }
 
     public function edit($id)
@@ -57,6 +61,7 @@ class PostController extends Controller
             // User is authorized to update the post
             // Return the edit view or implement your logic here
             $post = Post::findOrFail($id);
+
             return view('posts.edit', ['post' => $post]);
         }
         else
@@ -84,8 +89,11 @@ class PostController extends Controller
                 'title' => $request->input('title'),
                 'content' => $request->input('content'),
             ]);
-
-            return redirect()->route('posts.show', ['post' => $post->id])->with('success', 'Post updated successfully.');
+            $notification=array(
+                'messege'=>'Sucessfully Data Updated',
+                'alert-type'=>'success'
+            );
+            return redirect()->route('posts.show', ['post' => $post->id])->with($notification);
         }
         else
         {
@@ -102,7 +110,13 @@ class PostController extends Controller
         {
             // User is authorized to delete the post
             $post->delete();
-            return redirect()->route('posts.show')->with('success', 'Post deleted successfully.');
+
+            $notification=array(
+                'messege'=>'Sucessfully Data Deleted',
+                'alert-type'=>'success'
+            );
+
+            return redirect()->route('posts.show')->with($notification);
         }
         else
         {

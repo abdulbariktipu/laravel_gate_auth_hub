@@ -21,12 +21,12 @@ use App\Http\Controllers\PostPolicyController;
 //     return view('subscriber');
 // });
 // https://blog.w3programmers.com/authorization-with-laravel-gates/
-// Route::get('subscribe',function() {
-//     if (Gate::allows('subscriber-only', Auth::user())) {
-//         return view('subscriber');
-//     }
-//     return redirect()->route('login');
-// });
+Route::get('subscribe',function() {
+    if (Gate::allows('subscriber-only', Auth::user())) {
+        return view('subscriber');
+    }
+    return redirect()->route('login');
+});
 
 // for vuejs
 // Route::get('/appVue', function () {
@@ -48,9 +48,12 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.delete');
+// Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.delete');
+Route::get('/posts/{id}', [PostController::class, 'destroy'])->name('destroy');
 
 Route::get('/calendar', [App\Http\Controllers\HomeController::class, 'CalendarFn'])->name('calendar');
+
+
 
 // Laravel Policy
 // https://blog.w3programmers.com/user-role-and-permission-with-laravel-policy/

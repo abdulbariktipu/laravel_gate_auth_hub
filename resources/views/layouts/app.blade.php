@@ -41,6 +41,13 @@
         <link href="{{ asset('common_files/assets/fullcalendar/fullcalendar.css') }}" rel="stylesheet" />
         <link href="{{ asset('common_files/assets/select2/select2.css') }}" rel="stylesheet" type="text/css" />
     
+        {{-- TOASTR MESSAGE ALERT START HERE --}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+        {{-- TOASTR MESSAGE ALERT END HERE --}}
+
+        <!-- DataTables -->
+        <link href="{{ asset('common_files/assets/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+
         <!-- Styles -->
         
     </head>
@@ -393,5 +400,69 @@
         });
     </script>
 
+    {{-- TOASTR MESSAGE ALERT START HERE --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    {{-- TOASTR MESSAGE ALERT END HERE --}}
+
+    {{-- DELETE MESSAGE SWEETALERT START HERE --}}
+    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
+    {{-- DELETE MESSAGE SWEETALERT START HERE --}}
+
+    {{-- TOASTR MESSAGE ALERT START HERE --}}
+    <script type="text/javascript">
+        @if(Session::has('messege'))
+        var type="{{ Session::get('alert-type','info') }}";
+        // alert(type);
+        switch(type){
+            case 'info':
+                toastr.info('{{ Session::get('messege') }}');
+                break;
+            case 'success':
+                toastr.success('{{ Session::get('messege') }}');
+                break;
+            case 'warning':
+                toastr.warning('{{ Session::get('messege') }}');
+                break;
+            case 'error':
+                toastr.error('{{ Session::get('messege') }}');
+                break;
+        }
+        @endif
+    </script>
+    {{-- TOASTR MESSAGE ALERT END HERE --}}
+
+    {{-- DELETE MESSAGE SWEETALERT START HERE --}}
+    <script>
+        $(document).on("click", "#delete", function (e) {
+            e.preventDefault();
+            var link = $(this).attr("href");
+            swal({
+                title: "Are your want to delete?",
+                text: "Once delete, this will be permanently delete!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete)=>{
+                if (willDelete) {
+                    window.location.href=link;
+                }else{
+                    swal("Safe Data!");
+                }
+            });
+        });
+    </script>
+    {{-- DELETE MESSAGE SWEETALERT END HERE --}}
+
+    {{-- DdataTables start HERE --}}
+    <script src="{{ asset('common_files/assets/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('common_files/assets/datatables/dataTables.bootstrap.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#datatable').dataTable();
+        } );
+    </script>
+    {{-- DdataTables end HERE --}}
 </body>
 </html>

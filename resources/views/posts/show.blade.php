@@ -24,7 +24,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                              <table class="table">
+                              <table id="datatable" class="table">
                                 <thead>
                                   <tr>
                                     <th scope="col">ID:</th>
@@ -45,17 +45,19 @@
                                         <td>
                                           <div class="row">
                                             <div class="col-md-4">
-                                          @can('update-post', $post)
-                                            <a class="btn btn-info" href="{{ route('posts.edit', ['post' => $post->id]) }}">Edit</a>
+                                            @can('update-post', $post)
+                                            <a class="btn btn-info" href="{{ route('posts.edit', $post->id) }}">Edit</a>
                                             @endcan
                                             </div>
+
                                             <div class="col-md-4">
                                             @can('delete-post', $post)
-                                            <form action="{{ route('posts.delete', ['post' => $post->id]) }}" method="POST">
+                                            {{-- <form action="{{ route('posts.delete', ['post' => $post->id]) }}" method="POST">
                                               @csrf
                                               @method('DELETE')
-                                              <button type="submit" class="btn btn-danger">Delete</button>
-                                          </form>
+                                              <button id="delete" type="submit" class="btn btn-danger">Delete</button>
+                                            </form> --}}
+                                            <a href="{{URL::to('posts/'.$post->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                                             @endcan
                                             </div>
                                           </div>
