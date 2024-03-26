@@ -169,10 +169,10 @@
                 <div id="sidebar-menu">
                     <ul>
                         <li>
-                            <a href="{{ route('home') }}" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
+                            <a class="{{ Route::is('home') ? 'active' : '' }} waves-effect"  href="{{ route('home') }}"><i class="md md-home"></i><span> Dashboard </span></a>
                         </li>
                         <li>
-                            <a class="waves-effect" href="{{ route('posts.show') }}"><i class="md md-view-list"></i><span>All Post</span></a>
+                            <a class="{{ Route::is('posts.show') ? 'active' : '' }} waves-effect" href="{{ route('posts.show') }}"><i class="md md-view-list"></i><span>All Post</span></a>
                         </li>
                         <li class="has_sub">
                             <a href="#" class="waves-effect"><i class="md md-mail"></i><span> Mail </span><span class="pull-right"><i class="md md-add"></i></span></a>
@@ -184,7 +184,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('calendar') }}" class="waves-effect"><i class="md md-event"></i><span> Calendar </span></a>
+                            <a class="{{ Route::is('calendar') ? 'active' : '' }} waves-effect" href="{{ route('calendar') }}"><i class="md md-event"></i><span> Calendar </span></a>
                         </li>
 
                         <li class="has_sub">
@@ -224,7 +224,7 @@
                                 <li><a href="font-awesome.html">Font awesome</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="has_sub">
                             <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Forms </span><span class="pull-right"><i class="md md-add"></i></span></a>
                             <ul class="list-unstyled">
@@ -319,7 +319,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-            
+
         <footer class="footer text-right">
             2022 © Moltran.
         </footer>
