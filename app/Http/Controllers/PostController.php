@@ -25,7 +25,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $posts = Post::with('user')->get();
+        //$posts = Post::with('user')->get();
         // dd($posts);
         return view('posts.create');
     }

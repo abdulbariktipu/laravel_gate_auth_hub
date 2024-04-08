@@ -52,11 +52,11 @@
 
                                             <div class="col-md-4">
                                             @can('delete-post', $post)
-                                            {{-- <form action="{{ route('posts.delete', ['post' => $post->id]) }}" method="POST">
+                                            <form action="{{ route('posts.delete', ['post' => $post->id]) }}" method="POST">
                                               @csrf
                                               @method('DELETE')
                                               <button id="delete" type="submit" class="btn btn-danger">Delete</button>
-                                            </form> --}}
+                                            </form>
                                             <a href="{{URL::to('posts/'.$post->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                                             @endcan
                                             </div>

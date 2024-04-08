@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostPolicyController;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,13 @@ Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.upda
 Route::get('/posts/{id}', [PostController::class, 'destroy'])->name('destroy');
 
 Route::get('/calendar', [App\Http\Controllers\HomeController::class, 'CalendarFn'])->name('calendar');
+
+Route::get('/form/create', [FormController::class, 'create'])->name('form.create');
+Route::post('/form/form_store_data', [FormController::class, 'store'])->name('store_data');
+Route::get('/form/show', [FormController::class, 'show'])->name('form.show');
+Route::get('/form/edit/{id}', [FormController::class, 'edit']);
+Route::post('/update_data/{id}', [FormController::class, 'update']);
+Route::get('/form/delete/{id}', [FormController::class, 'destroy']);
 
 
 

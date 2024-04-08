@@ -178,14 +178,11 @@
                         <li>
                             <a class="{{ Route::is('home') ? 'active' : '' }} waves-effect"  href="{{ route('home') }}"><i class="md md-home"></i><span> Dashboard </span></a>
                         </li>
-                        <li>
-                            <a class="{{ Route::is('posts.show') ? 'active' : '' }} waves-effect" href="{{ route('posts.show') }}"><i class="md md-view-list"></i><span>All Post</span></a>
-                        </li>
                         <li class="has_sub">
-                            <a href="#" class="waves-effect"><i class="md md-mail"></i><span> Mail </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                            <a href="#" class="waves-effect"><i class="md md-mail"></i><span> Posts </span><span class="pull-right"><i class="md md-add"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ route('posts.show') }}">All Post</a></li>
-                                <li><a href="email-compose.html">Compose Mail</a></li>
+                                <li><a class="{{ Route::is('posts.create') ? 'active' : '' }} waves-effect" href="{{ route('posts.create') }}">Create</a></li>
+                                <li><a class="{{ Route::is('posts.show') ? 'active' : '' }} waves-effect" href="{{ route('posts.show') }}">All Post</a></li>
                                 <li><a href="email-read.html">View Mail</a></li>
                             </ul>
                         </li>
@@ -193,20 +190,14 @@
                         <li>
                             <a class="{{ Route::is('calendar') ? 'active' : '' }} waves-effect" href="{{ route('calendar') }}"><i class="md md-event"></i><span> Calendar </span></a>
                         </li>
-
                         <li class="has_sub">
-                            <a href="#" class="waves-effect"><i class="md md-palette"></i> <span> Elements </span> <span class="pull-right"><i class="md md-add"></i></span></a>
+                            <a href="#" class="waves-effect"><i class="md md-palette"></i> <span> Form </span> <span class="pull-right"><i class="md md-add"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="typography.html">Typography</a></li>
-                                <li><a href="buttons.html">Buttons</a></li>
+                                @can('page-view')
+                                <li><a class="{{ Route::is('form.create') ? 'active' : '' }} waves-effect" href="{{ route('form.create') }}">Create</a></li>
+                                @endcan
+                                <li><a class="{{ Route::is('form.show') ? 'active' : '' }} waves-effect" href="{{ route('form.show') }}">Show</a></li>
                                 <li><a href="panels.html">Panels</a></li>
-                                <li><a href="checkbox-radio.html">Checkboxs-Radios</a></li>
-                                <li><a href="tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                                <li><a href="modals.html">Modals</a></li>
-                                <li><a href="bootstrap-ui.html">BS Elements</a></li>
-                                <li><a href="progressbars.html">Progress Bars</a></li>
-                                <li><a href="notification.html">Notification</a></li>
-                                <li><a href="sweet-alert.html">Sweet-Alert</a></li>
                             </ul>
                         </li>
 
